@@ -1,0 +1,54 @@
+.container {
+  user-select: none;
+  height: 100vh;
+}
+.container .userInfo {
+  background-color: pink;
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.container .userInfo .userAvatar img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  transition: all 0.5s;
+}
+.container .userInfo .userAvatar img:hover {
+  cursor: pointer;
+  transform: rotate(360deg);
+}
+.container .userInfo .userName {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: aliceblue;
+  text-align: center;
+}
+.container .userInfo .list {
+  display: flex;
+  margin-top: 100px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.container .userInfo .list a {
+  color: aliceblue;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 20px;
+  transition: all 0.3s;
+}
+.container .userInfo .list a:hover {
+  transform: scale(1.1);
+}
+.container .editor {
+  width: 50%;
+  margin: auto;
+}
