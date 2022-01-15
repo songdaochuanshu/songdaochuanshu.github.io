@@ -4,7 +4,7 @@
  * @Author: 松岛川树
  * @Date: 2022-01-12 16:46:19
  * @LastEditors: 松岛川树
- * @LastEditTime: 2022-01-15 15:50:41
+ * @LastEditTime: 2022-01-15 15:58:46
  * @FilePath: \umi-index\src\pages\index\index.tsx
  */
 import styles from './index.less';
@@ -63,7 +63,7 @@ let getMdData = async (): Promise<string> => {
 let hrefDataMap = (data: Array<string>): any => {
   if (data) return data.map((item: any) => <a href={item.href}>{item.name}</a>);
 };
-//清除dom所有br
+
 let clearBr = (): void => {
   let brs = document.querySelectorAll('br');
   for (let i = 0; i < brs.length; i++) {
