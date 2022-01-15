@@ -4,12 +4,12 @@
  * @Author: 松岛川树
  * @Date: 2022-01-12 16:46:19
  * @LastEditors: 松岛川树
- * @LastEditTime: 2022-01-15 15:58:46
+ * @LastEditTime: 2022-01-15 17:57:06
  * @FilePath: \umi-index\src\pages\index\index.tsx
  */
 import styles from './index.less';
-import { useEffect } from 'react';
 import { IGetInitialProps, Helmet } from 'umi';
+import { useEffect } from 'react';
 import Editor from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
 

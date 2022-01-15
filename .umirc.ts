@@ -4,7 +4,7 @@
  * @Author: 松岛川树
  * @Date: 2022-01-12 16:46:19
  * @LastEditors: 松岛川树
- * @LastEditTime: 2022-01-15 15:00:17
+ * @LastEditTime: 2022-01-15 17:40:20
  * @FilePath: \umi-index\.umirc.ts
  */
 import { defineConfig } from 'umi';
