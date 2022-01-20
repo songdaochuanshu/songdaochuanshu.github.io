@@ -1,29 +1,32 @@
 /*
  * @Descripttion:
  * @version:
- * @Author: 松岛川树
+ * @Author: MiKin
  * @Date: 2022-01-12 16:46:19
- * @LastEditors: 松岛川树
- * @LastEditTime: 2022-01-15 17:57:06
+ * @LastEditors: MiKin
+ * @LastEditTime: 2022-01-20 17:48:44
  * @FilePath: \umi-index\src\pages\index\index.tsx
  */
 import styles from './index.less';
-import { IGetInitialProps, Helmet } from 'umi';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Editor from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
-
-const IndexPage = (props: any) => {
-  const { hrefData, mdData, avatar, name } = props;
+const IndexPage = () => {
+  const [hrefData, setHrefData] = useState([]);
+  const [textData, setTextData] = useState('');
+  getHrefData().then((res) => {
+    setHrefData(res);
+  });
+  getMdData().then((res) => {
+    setTextData(res);
+  });
+  let avatar = USER_INFO.avatar;
+  let name = USER_INFO.name;
   useEffect(() => {
     clearBr();
   });
   return (
     <div>
-      <Helmet encodeSpecialCharacters={true}>
-        <html lang="en" data-direction="许多人来来去去相聚又别离" />
-        <title>松岛川树</title>
-      </Helmet>
       <div className={styles.container}>
         <div className={styles.userInfo}>
           <div className={styles.userAvatar}>
@@ -33,7 +36,7 @@ const IndexPage = (props: any) => {
           <div className={styles.list}>{hrefDataMap(hrefData)}</div>
         </div>
         <div className={styles.editor}>
-          <Editor previewOnly={true} modelValue={mdData} />
+          <Editor previewOnly={true} modelValue={textData} />
         </div>
       </div>
     </div>
@@ -48,7 +51,7 @@ const USER_INFO = {
   name: '松岛川树',
   avatar: 'https://avatars.githubusercontent.com/u/81367559?v=4',
 };
-let getHrefData = async (): Promise<object> => {
+let getHrefData = async (): Promise<any> => {
   let res = await fetch(HREF_URL);
   let data = await res.json();
   return data;
@@ -60,7 +63,7 @@ let getMdData = async (): Promise<string> => {
   return data;
 };
 
-let hrefDataMap = (data: Array<string>): any => {
+let hrefDataMap = (data: Array<any>): any => {
   if (data) return data.map((item: any) => <a href={item.href}>{item.name}</a>);
 };
 
@@ -70,16 +73,5 @@ let clearBr = (): void => {
     brs[i].remove();
   }
 };
-
-IndexPage.getInitialProps = (async (ctx): Promise<any> => {
-  let hrefData = await getHrefData();
-  let mdData = await getMdData();
-  return Promise.resolve({
-    hrefData,
-    mdData,
-    avatar: USER_INFO.avatar,
-    name: USER_INFO.name,
-  });
-}) as IGetInitialProps;
 
 export default IndexPage;

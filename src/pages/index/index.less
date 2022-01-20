@@ -3,7 +3,10 @@
   height: 100vh;
 
   .userInfo {
-    background-color: pink;
+    background-image: url('https://blogs.songdaochuanshu.com/wp-content/uploads/2021/12/pexels-karolina-grabowska-4621652-scaled.jpg');
+    background-size: cover;
+    background-position: fixed;
+    background-repeat: no-repeat;
     width: 100%;
     padding-top: 20px;
     display: flex;
@@ -11,13 +14,13 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-
     .userAvatar {
       img {
         border-radius: 50%;
         width: 150px;
         height: 150px;
         transition: all 0.5s;
+
         &:hover {
           cursor: pointer;
           transform: rotate(360deg);
@@ -57,7 +60,7 @@
   }
 
   .editor {
-    width: 50%;
+    width: 60%;
     margin: auto;
   }
 }
