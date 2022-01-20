@@ -4,7 +4,7 @@
  * @Author: MiKin
  * @Date: 2022-01-12 16:46:19
  * @LastEditors: MiKin
- * @LastEditTime: 2022-01-20 17:48:44
+ * @LastEditTime: 2022-01-20 18:31:41
  * @FilePath: \umi-index\src\pages\index\index.tsx
  */
 import styles from './index.less';
@@ -14,17 +14,17 @@ import 'md-editor-rt/lib/style.css';
 const IndexPage = () => {
   const [hrefData, setHrefData] = useState([]);
   const [textData, setTextData] = useState('');
-  getHrefData().then((res) => {
-    setHrefData(res);
-  });
-  getMdData().then((res) => {
-    setTextData(res);
-  });
+  useEffect(() => {
+    (async () => {
+      const res1 = await getHrefData();
+      const res2 = await getMdData();
+      setHrefData(res1);
+      setTextData(res2);
+      clearBr();
+    })();
+  }, []);
   let avatar = USER_INFO.avatar;
   let name = USER_INFO.name;
-  useEffect(() => {
-    clearBr();
-  });
   return (
     <div>
       <div className={styles.container}>
