@@ -3,8 +3,8 @@
  * @version:
  * @Author: 松岛川树
  * @Date: 2022-01-12 16:46:19
- * @LastEditors: 松岛川树
- * @LastEditTime: 2022-01-15 17:40:20
+ * @LastEditors: MiKin
+ * @LastEditTime: 2022-01-20 17:39:01
  * @FilePath: \umi-index\.umirc.ts
  */
 import { defineConfig } from 'umi';
@@ -14,8 +14,6 @@ export default defineConfig({
   },
   routes: [{ path: '/', component: '@/pages/index/index' }],
   fastRefresh: {},
-  ssr: {},
-  exportStatic: {},
   extraPostCSSPlugins: [
     require('autoprefixer')({
       overrideBrowserslist: [
