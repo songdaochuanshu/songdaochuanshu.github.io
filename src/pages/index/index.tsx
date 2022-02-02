@@ -44,7 +44,7 @@ const IndexPage = () => {
 };
 
 const HREF_URL =
-  'https://mock.mengxuegu.com/mock/606f08eeb43557571f7269a4/shequ/getHref';
+  'https://raw.githubusercontent.com/songdaochuanshu/songdaochuanshu.github.io/master/mock/href.json';
 const MD_URL =
   'https://raw.githubusercontent.com/songdaochuanshu/songdaochuanshu/main/README.md';
 const USER_INFO = {
