@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
+          # 本仓库未提交 lockfile，故不开启 npm 缓存（否则 setup-node 会报找不到锁文件）
 
       - name: Install and Build 🔧
         # umi 3.x 依赖 webpack 4，其 md4 哈希在 Node 17+ 的 OpenSSL 3 下不可用
