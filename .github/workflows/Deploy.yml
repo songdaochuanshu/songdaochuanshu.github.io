@@ -4,25 +4,31 @@ on:
     branches:
       - main
       - master
+
 jobs:
-   build-and-deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
+        uses: actions/checkout@v4
 
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+      - name: Setup Node 🟢
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install and Build 🔧
+        # umi 3.x 依赖 webpack 4，其 md4 哈希在 Node 17+ 的 OpenSSL 3 下不可用
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
         run: |
           npm install
           npm run build
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: dist # The folder the action should deploy.
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: dist
-          BUILD_SCRIPT: npm install && npm run build
+          branch: gh-pages
+          folder: dist
+          token: ${{ secrets.ACCESS_TOKEN }}
